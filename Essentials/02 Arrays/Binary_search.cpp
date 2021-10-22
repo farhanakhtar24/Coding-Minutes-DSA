@@ -1,4 +1,7 @@
 /*
+For binary search the array should be sorted    
+Time complexity : log(N) base 2.
+TC of Binary search <<<< TC of Linear Search
 */
 
 #include <iostream>
@@ -6,7 +9,8 @@ using namespace std;
 
 int Binary(int arr[], int size, int key)
 {
-    int s = 0, e = size - 1;
+    int s = 0;
+    int e = size - 1;
     while (s <= e)
     {
         int mid = (s + e) / 2;
@@ -23,7 +27,7 @@ int Binary(int arr[], int size, int key)
             s = mid + 1;
         }
     }
-    return 2;
+    return -1;
 }
 
 int main()
