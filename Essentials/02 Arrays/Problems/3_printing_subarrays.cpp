@@ -2,10 +2,13 @@
 Subarrays are like smaller parts of main array
 We can our knowledge from pairPrinting problem and iterate over each element in range over i-j to print subarrays
 
+TC : O(n^3);
 */
 
 #include <iostream>
 using namespace std;
+
+// PROBLEM : Print each subarray of the given array
 
 void printSubArrays(int arr[], int n)
 {
@@ -13,8 +16,9 @@ void printSubArrays(int arr[], int n)
     {
         for (int j = i; j < n; j++)
         {
-            // cout << "(" << i << "," << j << ") , ";
             cout << "(";
+
+            // Iterator k traverses from i to j
             int k = i;
             while (k <= j)
             {
@@ -33,5 +37,3 @@ int main()
     printSubArrays(arr, n);
     return 0;
 }
-
-// TC : O(n^3);

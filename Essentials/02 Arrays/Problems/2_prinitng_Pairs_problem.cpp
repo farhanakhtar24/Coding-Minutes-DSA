@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// PROBLEM : Print pairs of each element in the array
+
 void printAllPairs(int arr[], int size)
 {
     for (int i = 0; i < size; i++)
