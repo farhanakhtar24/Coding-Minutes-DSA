@@ -11,11 +11,18 @@ void printSubArrays(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = i; j < n; j++)
         {
-            cout << "(" << i << " , " << j << "), ";
+            // cout << "(" << i << "," << j << ") , ";
+            cout << "(";
+            int k = i;
+            while (k <= j)
+            {
+                cout << arr[k] << ",";
+                k++;
+            }
+            cout << ")" << endl;
         }
-        cout << endl;
     }
 }
 
@@ -26,3 +33,5 @@ int main()
     printSubArrays(arr, n);
     return 0;
 }
+
+// TC : O(n^3);
