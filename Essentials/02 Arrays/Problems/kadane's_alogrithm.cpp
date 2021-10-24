@@ -7,7 +7,7 @@ using namespace std;
 
 int Kadane_algorithm(int arr[], int n)
 {
-    int cs = 0, ms = INT_MIN;
+    int cs = 0, ms = 0;
     for (int i = 0; i < n; i++)
     {
         cs += arr[i];
@@ -24,6 +24,6 @@ int main()
 {
     int arr[] = {-2, 3, 4, -1, 5, -12, 6, 1, 3};
     int n = sizeof(arr) / sizeof(int);
-    Kadane_algorithm(arr, n);
+    cout << Kadane_algorithm(arr, n);
     return 0;
 }
