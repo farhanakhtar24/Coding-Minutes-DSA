@@ -5,11 +5,11 @@ void SelectionSortAlgo(int arr[], int n)
 {
     for (int minimum = 0; minimum < n - 1; minimum++)
     {
-        for (int j = minimum; j < n; j++)
+        for (int j = minimum + 1; j < n; j++)
         {
-            if (arr[minimum] > arr[j + 1])
+            if (arr[minimum] > arr[j])
             {
-                swap(arr[j + 1], arr[minimum]);
+                swap(arr[j], arr[minimum]);
             }
         }
     }
