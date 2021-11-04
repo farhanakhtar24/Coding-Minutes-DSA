@@ -1,34 +1,31 @@
-#include <iostream>
-using namespace std;
-
-// Prefix Sum Approach
-void SumPrefixApproach(int arr[], int n)
+class Solution
 {
-    int largest = INT_MIN;
-    int prefix[n] = {0};
-    prefix[0] = arr[0];
-    for (int i = 1; i < n; i++)
+public:
+    bool canConstruct(string ransomNote, string magazine)
     {
-        prefix[i] = prefix[i - 1] + arr[i];
-    }
+        bool answer = false;
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i; j < n; j++)
+        if (ransomNote.length() > magazine.length())
         {
-            int sumEachSubArray;
-            // If i=0 then every subarray is starting from element 0
-            sumEachSubArray = i > 0 ? prefix[j] - prefix[i - 1] : prefix[j];
-
-            largest = max(sumEachSubArray, largest);
+            return false;
         }
-    }
-}
 
-int main()
-{
-    int arr[] = {-2, 3, 4, -1, 5, -12, 6, 1, 3};
-    int n = sizeof(arr) / sizeof(int);
-    SumPrefixApproach(arr, n);
-    return 0;
-}
+        for (int r = 0; ransomNote[r] != '\0'; r++)
+        {
+            for (int m = 0; magazine[m] != '\0'; m++)
+            {
+                if (ransomNote[r] == magazine[m])
+                {
+                    // answer=true;
+                    magazine[m] = '#';
+                    break;
+                }
+            }
+            if (answer == false)
+            {
+                return false;
+            }
+        }
+        return answer;
+    }
+};

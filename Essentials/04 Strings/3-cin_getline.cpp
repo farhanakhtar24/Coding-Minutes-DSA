@@ -1,3 +1,7 @@
+/*
+cin.getline works in char arrays and getline works in string class
+*/
+
 #include <iostream>
 using namespace std;
 
