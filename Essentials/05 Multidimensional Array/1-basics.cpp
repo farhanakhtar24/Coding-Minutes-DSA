@@ -3,7 +3,6 @@ How the arrays stored inside the memory?
 ==> In memory everything must be linearised. So the 2 methods of stroing the arrays are Row,Column major
 
 Time taken by the compiler to store arrays in both methods is same.
-
 */
 
 #include <iostream>
