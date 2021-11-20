@@ -3,7 +3,7 @@ Uptil now we have created arrays which have a fixed(leaving the dynamic arrays o
 The vectors allow us to make arrays of variable sizes , who's sizes can be altered.
 
 The growing of vector size happens in such a way that if we want to an element to the array and the array is full then
-the vector's size will get doubled of what it was before adding the elementand then the element will be added in the 
+the vector's size will get doubled of what it was before adding the element and then the element will be added in the 
 doubled array
 */
 #include <iostream>
