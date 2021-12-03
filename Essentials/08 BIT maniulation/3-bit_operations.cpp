@@ -42,6 +42,22 @@ void updateIthBit(int &number, int bit, int valueOfBit)
     number = number | mask;
 }
 
+void clearLastIBits(int &number, int bits)
+{ // example : on clearing last 2 bits of 0111 , we get 0100;
+    int mask = (~0) << bits;
+    number = number & mask;
+}
+
+void clearBitsInRange(int &number, int i, int j)
+{
+
+    // break down mask in 2 parts
+    int mask1 = ~(0) << (j + 1);
+    int mask2 = (1 << i) - 1;
+    int mask = mask1 | mask2;
+    number = number & mask;
+}
+
 int main()
 {
     int num, bit;
@@ -54,7 +70,9 @@ int main()
     // setIthBit(num, bit);
     // clearIthBit(num, bit);
     // cout << "Bit : " << getIthBit(num, bit) << endl;
-    updateIthBit(num, bit, 0);
+    // updateIthBit(num, bit, 0);
+    // clearLastIBits(num, bit);
+    clearBitsInRange(num, 1, 3);
     cout << num << endl;
     return 0;
 }

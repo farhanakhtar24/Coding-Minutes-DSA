@@ -16,7 +16,7 @@ int main()
     vector<int> arrempty;
     cout << arrempty.size() << endl;
 
-    // Creating an innitialised vector arr
+    // Creating an initialised vector arr
     vector<int> arr = {1, 2, 3, 4, 5, 6};
 
     // the pushback function adds the element at the end of the array in constant time
