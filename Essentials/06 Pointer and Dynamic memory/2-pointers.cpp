@@ -27,6 +27,6 @@ int main()
     int **xxptr = &xptr;
     cout << "Address stored in xptr : " << xxptr << endl;
     cout << endl;
-    cout << "Address of x variable : " << **xxptr << endl;
+    cout << "Value of x variable : " << **xxptr << endl;
     return 0;
 }
