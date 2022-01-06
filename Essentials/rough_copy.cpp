@@ -1,35 +1,26 @@
 #include <iostream>
 using namespace std;
 
-char *removeDuplicate(char str[], int n)
+void findTriplets(int arr[], int n)
 {
-    // Used as index in the modified string
-    int index = 0;
-
-    // Traverse through all characters
-    for (int i = 0; i < n; i++)
+    for (int i = 2; i < n; i++)
     {
-
-        // Check if str[i] is present before it
-        int j;
-        for (j = 0; j < i; j++)
-            if (str[i] == str[j])
-                break;
-
-        // If not present, then add it to
-        // result.
-        if (j == i)
-            str[index++] = str[i];
+        int findVar = arr[i - 2] + arr[i - 1];
+        for (int j = i; j < n; j++)
+        {
+            if (findVar + arr[j] == 0)
+            {
+                cout << arr[i - 2] << " " << arr[i - 1] << " " << arr[j] << endl;
+            }
+        }
     }
-
-    return str;
 }
 
-// Driver code
 int main()
 {
-    char str[] = "geeksforgeeks";
-    int n = sizeof(str) / sizeof(str[0]);
 
-    cout << removeDuplicate(str, n) << endl; // idhar se print hoga AYAZ
+    int arr[] = {0, -1, 2, -3, 1};
+    int size = sizeof(arr) / sizeof(int);
+    findTriplets(arr, size);
+    return 0;
 }
