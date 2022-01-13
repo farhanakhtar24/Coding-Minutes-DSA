@@ -1,26 +1,27 @@
 #include <iostream>
+#include <ctime>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-void findTriplets(int arr[], int n)
+int decimalToBinary(int n)
 {
-    for (int i = 2; i < n; i++)
+    if (n == 0)
     {
-        int findVar = arr[i - 2] + arr[i - 1];
-        for (int j = i; j < n; j++)
-        {
-            if (findVar + arr[j] == 0)
-            {
-                cout << arr[i - 2] << " " << arr[i - 1] << " " << arr[j] << endl;
-            }
-        }
+        return (n % 2);
+    }
+    string temp = "";
+    while (n > 0)
+    {
+        temp += to_string(decimalToBinary(n / 2));
     }
 }
 
 int main()
 {
-
-    int arr[] = {0, -1, 2, -3, 1};
-    int size = sizeof(arr) / sizeof(int);
-    findTriplets(arr, size);
+    int n;
+    cin >> n;
+    cout << decimalToBinary(n) << endl;
     return 0;
 }
