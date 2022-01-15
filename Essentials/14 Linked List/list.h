@@ -177,12 +177,13 @@ public:
         Node *current = head;
         Node *prev = nullptr;
         Node *temp;
-        for (int jump = 0; current->next != nullptr; jump++)
+        for (int jump = 0; current != nullptr; jump++)
         {
             temp = current->next;
             current->next = prev;
             prev = current;
             current = temp;
         }
-        }
+        head = prev;
+    }
 };
