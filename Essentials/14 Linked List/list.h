@@ -41,7 +41,7 @@ class LinkedList
             return 0;
         }
 
-        //recursive call
+        // recursive call
         int subindex = helper(start->next, key);
 
         if (subindex == -1)
