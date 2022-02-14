@@ -11,11 +11,11 @@ using namespace std;
 int main()
 {
     HashTable<int> h;
-    h.
-        // h.insert("mango", 100);
-        // h.insert("mango", 100);
-        // h.insert("mango", 100);
-        // h.insert("mango", 100);
-        // h.insert("mango", 100);
-        return 0;
+    h.;
+    // h.insert("mango", 100);
+    // h.insert("mango", 100);
+    // h.insert("mango", 100);
+    // h.insert("mango", 100);
+    // h.insert("mango", 100);
+    return 0;
 }
