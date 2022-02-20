@@ -40,7 +40,7 @@ class HashTable
 
         for (auto ch : key)
         {
-            idx = (idex + ch * power) % ts;
+            idx = (idx + ch * power) % ts;
             power = (power * 29) % ts;
         }
 
@@ -51,18 +51,18 @@ class HashTable
     {
         Node<T> **oldTable = table;
         int oldTs = ts;
-
+        cs = 0;
         // increase table size to make new table
         ts = (2 * ts) + 1;
         table = new Node<T> *[ts]; // should make it prime
 
         for (int i = 0; i < ts; i++)
         {
-            table[i] == NULL;
+            table[i] = NULL;
         }
 
         // Copy elements from old table to new table
-        for (int i - 0; i < ts; i++)
+        for (int i = 0; i < oldTs; i++)
         {
             Node<T> *temp = oldTable[i];
             while (temp != NULL)
@@ -85,13 +85,13 @@ class HashTable
     }
 
 public:
-    HashTable(int defaultSize = 7);
+    HashTable(int defaultSize = 7)
     {
         cs = 0;
         ts = defaultSize;
 
         table = new Node<T> *[ts];
-        for (i = 0; i < ts; i++)
+        for (int i = 0; i < ts; i++)
         {
             table[i] = NULL;
         }
@@ -100,12 +100,11 @@ public:
     void insert(string key, T val)
     {
         int index = hashFn(key); // int in range 0 to (ts-1)
-
         Node<T> *n = new Node<T>(key, val);
 
         // insertion at head of linked list
         n->next = table[index];
-        table[idx] = n;
+        table[index] = n;
 
         cs++;
         float loadFactor = cs / ts;
@@ -115,12 +114,82 @@ public:
         }
     }
 
+    bool isPresent(string key)
+    {
+        int index = hashFn(key);
+        Node<T> *temp = table[index];
+        while (temp != NULL)
+        {
+            if (temp->key == key)
+            {
+                return true;
+            }
+            temp = temp->next;
+        }
+        return false;
+    }
+
+    T *search(string key)
+    {
+        if (isPresent(key))
+        {
+            int index = hashFn(key);
+            Node<T> *temp = table[index];
+
+            while (temp != NULL)
+            {
+                if (temp->key == key)
+                {
+                    return &temp->value;
+                }
+                temp = temp->next;
+            }
+        }
+        return NULL;
+    }
+
+    void erase(string key)
+    {
+        if (isPresent(key))
+        {
+            int index = hashFn(key);
+            Node<T> *temp = table[index];
+
+            // to delete head
+            if (temp->key == key)
+            {
+                table[index] = temp->next;
+                delete temp;
+                return;
+            }
+
+            // to delete in the middle of a list
+            Node<T> *prevTemp = new Node<T>("", 0);
+            prevTemp->next = temp;
+            while (temp != NULL)
+            {
+                if (temp->key == key)
+                {
+                    prevTemp->next = temp->next;
+                    delete temp;
+                    return;
+                }
+                temp = temp->next;
+                prevTemp = prevTemp->next;
+            }
+        }
+        else
+        {
+            cout << "Cant Erase as the key is not present" << endl;
+        }
+    }
+
     void print()
     {
         // iterate over all buckets
-        for (i = 0; i < ts; i++)
+        for (int i = 0; i < ts; i++)
         {
-            cout << "Bucket " << i < < "->";
+            cout << "Bucket " << i << "->";
             Node<T> *temp = table[i];
             while (temp != NULL)
             {
@@ -129,5 +198,20 @@ public:
             }
             cout << endl;
         }
+    }
+
+    T &operator[](string key)
+    {
+        // return the value
+        // if key is not found then create a new node and return
+        // return the existing node
+        T *valueFound = search(key);
+        if (valueFound == NULL)
+        {
+            T object;
+            insert(key, object);
+            valueFound = search(key);
+        }
+        return *valueFound;
     }
 };

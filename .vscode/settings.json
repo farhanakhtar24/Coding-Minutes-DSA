@@ -4,6 +4,11 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "stdio.h": "c",
-        "random": "cpp"
+        "random": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp"
     }
 }
