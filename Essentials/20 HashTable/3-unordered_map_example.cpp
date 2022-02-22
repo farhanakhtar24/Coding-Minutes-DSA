@@ -17,7 +17,7 @@ int main()
     // update query : O(1)
     menu["dosa"] = (1 + 0.1) * menu["dosa"];
 
-    // Deletion
+    // Deletion : O(1)
     menu.erase("dosa");
 
     // Search inside the items : O(1)
