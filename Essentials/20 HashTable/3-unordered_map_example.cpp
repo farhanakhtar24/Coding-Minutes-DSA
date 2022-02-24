@@ -2,6 +2,8 @@
 #include <unordered_map>
 using namespace std;
 
+// All queries will take O(1) time as the unordered_map ds implements a hashtable internally
+
 int main()
 {
     unordered_map<string, int> menu;

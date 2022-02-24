@@ -2,9 +2,9 @@
 #include <map>
 using namespace std;
 
-// Now all order 1 queries will become logN queries as the map ds implements a binary tree internally
-
+// Now all order 1 queries will become logN queries as the map ds implements a slef balancing binary tree internally
 // the key value pairs are sorted lexographically (according to the alphabetical order of the key's 1st letter)
+
 int main()
 {
     map<string, int> menu;

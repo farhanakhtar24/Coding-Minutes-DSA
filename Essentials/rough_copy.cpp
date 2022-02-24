@@ -1,33 +1,39 @@
-#include<iostream> 
-using namespace std; 
+#include <iostream>
+using namespace std;
+class student
+{
+    char name[25];
+    int m, p, d;
+    float avrg;
 
-int main(){ 
-    float amount; 
-    int units; 
-    char s[30]; 
-    cout<<"Enter name of user"<<endl; 
-    cin.get(s,30); 
-    cout<<"Enter number of units"<<endl; 
-    cin>>units; 
-    if(units<= 100){ 
-        amount=0.6*units; 
-    } 
-    else if(units>100 && units<= 300) 
-    { 
-        amount=0.8*units; 
-    } 
-    else { 
-        amount=0.9*units; 
-    } 
-    cout<<"Name of user is "<< s<<endl; 
-    cout<<"Number of units "<<units<<endl; 
-    if(amount<=50){ 
-        amount=50; 
-        cout<<" minimum amount is Rs."<<amount; 
-    } else if(amount>300){ 
-        amount=1.15*amount; 
-        cout<<"Total bill amount is Rs." <<amount; 
-    }else{ 
-        cout<<"your bill amount Rs."<<amount<<endl;} 
-    return 0; 
+public:
+    void get_data();
+    void display();
+};
+void student::get_data()
+{
+    cout << "Enter your name \n";
+    cin.getline(name, 25);
+    cout << "Enter marks in your subject" << endl;
+    cout << "1. Electrical Machine \n";
+    cin >> m;
+    cout << "2. Power System \n";
+    cin >> p;
+    cout << "3. Digital \n";
+    cin >> d;
+}
+void student::display()
+{
+    cout << "Entered name is " << name << endl;
+    avrg = (m + p + d) / 3;
+    cout << "Average of marks in M,P and d is " << avrg;
+}
+int main()
+{
+
+    student s1;
+    s1.get_data();
+    s1.display();
+
+    return 0;
 }
