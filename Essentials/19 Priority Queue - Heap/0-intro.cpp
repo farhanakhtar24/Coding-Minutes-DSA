@@ -10,3 +10,16 @@ Types of Heaps:
 
 At a particular time a heap can be of either max type or min type, it cannot be both at the same time
 */
+
+#include <iostream>
+#include "heap.h"
+using namespace std;
+
+int main()
+{
+    return 0;
+}
+/*
+For visualisation we should visualize a heap as a CBT , but store it in memory as an array
+Insertion T.C. in heap : O(logN)
+*/
