@@ -1,4 +1,3 @@
-
 /*
 Unordered set also works on hashing
 Just like unordered map each operation takes O(1) time on avg
@@ -26,7 +25,6 @@ int main()
 
     // erasing : O(1)
     s.erase(11);
-
     for (auto x : s)
     {
         cout << x << " "; // random order
