@@ -10,6 +10,10 @@
         "string": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "cmath": "cpp",
+        "stdc++.h": "c",
+        "algorithm": "c",
+        "variant": "c"
     }
 }
