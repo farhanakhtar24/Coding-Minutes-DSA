@@ -76,6 +76,34 @@ public:
             }
         }
     }
+
+    void dfsHelper(int source, vector<int> &visited)
+    {
+        visited[source] = 1;
+        cout << source << " , ";
+        for (auto x : adjList[source])
+        {
+            if (visited[x] == 0)
+            {
+                dfsHelper(x, visited);
+            }
+        }
+    }
+
+    // the dfs here is implemented for both connected and disconnected graph(when a graph has multiple components)
+    void dfs()
+    {
+        // TC : O(n)
+        // SC : O(n)
+        vector<int> visited(vertices + 1, 0);
+        for (int i = 1; i <= vertices; i++)
+        {
+            if (visited[i] == 0)
+            {
+                dfsHelper(i, visited);
+            }
+        }
+    }
 };
 
 int main()
@@ -84,13 +112,18 @@ int main()
     g.addEdge(1, 2);
     g.addEdge(1, 3);
     g.addEdge(2, 3);
-    g.addEdge(3, 5);
+    // g.addEdge(3, 5);
     g.addEdge(3, 4);
+    g.addEdge(4, 5);
 
     cout << "AdjList : \n";
     g.printGraph();
 
     cout << "BFS traversal : ";
     g.bfs();
+
+    cout << endl;
+    cout << "DFS traversal : ";
+    g.dfs();
     return 0;
 }
