@@ -15,7 +15,8 @@
         "stdc++.h": "c",
         "algorithm": "c",
         "variant": "c",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "new": "cpp"
     },
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true
