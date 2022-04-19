@@ -82,10 +82,6 @@ public:
         }
     }
 
-    void bfsHelper(int i, vector<int> &indegreeArray)
-    {
-    }
-
     // TC : O(N+E)
     // SC : O(N)+O(N)
 
