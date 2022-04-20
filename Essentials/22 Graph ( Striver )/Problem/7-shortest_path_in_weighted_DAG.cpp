@@ -69,17 +69,29 @@ public:
     // SC : O(2N)
     // ASC : only for DFS soln
 
-    void shortestDistanceInDAG(int source, int destination)
+    int shortestDistanceInDAG(int source, int destination)
     {
         stack<int> topoStack;
         topoDFS(topoStack);
-        cout << "TopoStack : ";
+
+        vector<int> distance(vertices, INT_MAX);
+        distance[source] = 0;
         while (!topoStack.empty())
         {
-            cout << topoStack.top() << " ,";
+            auto top = topoStack.top();
             topoStack.pop();
+            if (distance[top] != INT_MAX) // add this if block otherwise , this algo will not work
+            {
+                for (auto x : adjList[top])
+                {
+                    if (distance[top] + x.second < distance[x.first])
+                    {
+                        distance[x.first] = distance[top] + x.second;
+                    }
+                }
+            }
         }
-        // return 0;
+        return distance[destination] - distance[source];
     }
 };
 
@@ -94,6 +106,6 @@ int main()
     g.addEdge(4, 5, 4);
     g.addEdge(5, 3, 1);
     g.printGraph();
-    g.shortestDistanceInDAG(0, 5);
+    cout << g.shortestDistanceInDAG(1, 2) << endl;
     return 0;
 }
