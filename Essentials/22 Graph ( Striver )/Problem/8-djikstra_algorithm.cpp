@@ -1,7 +1,6 @@
 /*
 Shortest path in undirected graphs with weights
 */
-
 #include <iostream>
 #include <bits/stdc++.h>
 
@@ -18,7 +17,7 @@ public:
     {
         this->vertices = verts;
         this->undirrected = dir;
-        this->adjList = new vector<pair<int, int>>[vertices];
+        this->adjList = new vector<pair<int, int>>[vertices + 1];
     }
 
     void addEdge(int a, int b, int weight)
@@ -33,7 +32,7 @@ public:
     void printGraph()
     {
         cout << "AdjList : " << endl;
-        for (int i = 0; i < vertices; i++)
+        for (int i = 1; i <= vertices; i++)
         {
             cout << i << " --> ";
             for (auto x : adjList[i])
@@ -42,6 +41,33 @@ public:
             }
             cout << endl;
         }
+    }
+
+    // TC : O(NlogN)
+    // SC : 2*O(n)
+    int djikstra(int source, int destination)
+    {
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; // min heap , pair => (distance , source)
+        vector<int> distance(vertices + 1, INT_MAX);
+        distance[source] = 0;
+        pq.push({0, source});
+        while (!pq.empty())
+        {
+            int dist = pq.top().first;
+            int node = pq.top().second;
+            pq.pop();
+            for (auto it : adjList[node])
+            {
+                int adjacentNode = it.first;
+                int adjacentNodeDistance = it.second;
+                if (distance[node] + adjacentNodeDistance < distance[adjacentNode])
+                {
+                    distance[adjacentNode] = distance[node] + adjacentNodeDistance;
+                    pq.push({distance[adjacentNode], adjacentNode});
+                }
+            }
+        }
+        return distance[destination] - distance[source];
     }
 };
 
@@ -55,5 +81,6 @@ int main()
     g.addEdge(2, 5, 5);
     g.addEdge(3, 5, 1);
     g.printGraph();
+    cout << g.djikstra(4, 2) << endl;
     return 0;
 }
