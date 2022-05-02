@@ -9,16 +9,14 @@ void findSubSets(char *input, char *output, int i, int j)
     if (input[i] == '\0')
     {
         output[j] = '\0';
-        if (output[j] = '\0')
-        {
-            cout << "NULL";
-        }
         cout << output << endl;
         return;
     }
-    // rec case
+    // recur case
+    // include the letter
     output[j] = input[i];
     findSubSets(input, output, i + 1, j + 1);
+    // dont include the letter
     findSubSets(input, output, i + 1, j);
 }
 

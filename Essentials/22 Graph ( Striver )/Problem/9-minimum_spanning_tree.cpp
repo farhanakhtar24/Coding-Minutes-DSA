@@ -1,3 +1,5 @@
+// PRIMS ALGO not done
+
 /*
 There should be n nodes and n-1 edges , every node should be reachable by every other node
 MST : Out of all spanning trees possible the tree which has the minimum cost edges is known as the MST.
@@ -51,7 +53,9 @@ public:
         vector<bool> mstSet(vertices, false);
 
         key[0] = 0;
-        parent[0] = -1;
+        mstSet[0] = true;
+
+        // for (auto)
     }
 };
 
