@@ -1,65 +1,81 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <conio.h>
 
 using namespace std;
 
-class Student
-{
-    vector<double> marksArray;
+int main(void)
 
-public:
-    string id;
-    double totalMarks;
-    double percentage;
-    Student()
+{
+    float a[10][10], b[10], x[10], y[10];
+    int n = 0, m = 0, i = 0, j = 0;
+    cout << "Enter size of 2d array(Square matrix) : ";
+
+    cin >> n;
+
+    for (i = 0; i < n; i++)
+
     {
-        this->totalMarks = 0;
-        this->percentage = 0;
-    };
-    void addMarks(double marks)
-    {
-        marksArray.push_back(marks);
-        totalMarks += marks;
-        percentage = totalMarks / marksArray.size();
-    }
-    void marksInEachSubject()
-    {
-        int itr = 1;
-        for (auto x : marksArray)
+
+        for (j = 0; j < n; j++)
+
         {
-            cout << "Subject " << itr << " : " << x << endl;
+
+            cout << "Enter values no :(" << i << ", " << j << ") ";
+
+            cin >> a[i][j];
         }
     }
-    void printStudentMarksAndPercentage()
+
+    cout << "\nEnter Values to the right side of equation\n";
+
+    for (i = 0; i < n; i++)
+
     {
-        cout << "Total Marks : " << totalMarks << endl;
-        cout << "Percentage : " << percentage << endl;
+        cout << "Enter values no :(" << i << ", " << j << ") ";
+        cin >> b[i];
     }
-};
 
-int main()
-{
-    // for 2 students
-    vector<Student> school(2);
+    cout << "Enter initial values of x\n";
+    for (i = 0; i < n; i++)
 
-    for (int i = 0; i < school.size(); i++)
     {
-        cout << "Student " << i + 1 << endl;
-        for (int j = 0; j < 10; j++)
+
+        cout << "Enter values no. :(" << i << "):";
+
+        cin >> x[i];
+    }
+    cout << "\nEnter the no. of iteration : ";
+    cin >> m;
+
+    while (m > 0)
+    {
+
+        for (i = 0; i < n; i++)
+
         {
-            double mark;
-            cout << "S" << j + 1 << " marks : ";
-            cin >> mark;
-            school[i].addMarks(mark);
-        };
-        school[i].printStudentMarksAndPercentage();
+
+            y[i] = (b[i] / a[i][i]);
+
+            for (j = 0; j < n; j++)
+
+            {
+
+                if (j == i)
+
+                    continue;
+
+                y[i] = y[i] - ((a[i][j] / a[i][i]) * x[j]);
+
+                x[i] = y[i];
+            }
+
+            printf("x%d = %f ", i + 1, y[i]);
+        }
+
+        cout << "\n";
+
+        m--;
     }
 
-    double maxPercentage = 0;
-    for (auto x : school)
-    {
-        maxPercentage = max(x.percentage, maxPercentage);
-    }
-    cout << "Max Percentage" << maxPercentage << endl;
     return 0;
 }

@@ -37,7 +37,6 @@ void merge(vector<int> &v, int s, int e)
     int k = 0;
     for (int i = s; i <= e; i++)
     {
-        // cout << temp[i] << endl;
         v[i] = temp[k++];
     }
     return;
