@@ -71,7 +71,7 @@ int main()
 
     /****** STL for upper and lower bounds ******/
     cout << "STL method -->" << endl;
-    cout << "Frequency of element 3 : " << upper_bound(arr.begin(), arr.end(), 3) - lower_bound(arr.begin(), arr.end(), 3) + 1 << endl;
+    cout << "Frequency of element 3 : " << upper_bound(arr.begin(), arr.end(), 3) - lower_bound(arr.begin(), arr.end(), 3) << endl;
 
     return 0;
 }
