@@ -7,13 +7,13 @@ class Node
 {
 public:
     int data;
-    Node *left;
     Node *right;
+    Node *left;
 
     Node(int d)
     {
         data = d;
-        left = right = NULL;
+        right = left = NULL;
     }
 };
 
@@ -26,27 +26,14 @@ Node *insert(Node *root, int key)
 
     if (key < root->data)
     {
-        root->left = insert(root->left, key);
+        return insert(root->left, key);
     }
     else
     {
-        root->right = insert(root->right, key);
+        return insert(root->right, key);
     }
 
     return root;
-}
-
-void closest(Node *root, int diff, int key)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-
-    int d = min(diff, abs(root->data - key));
-    if (key > root->data)
-    {
-    }
 }
 
 int main()
