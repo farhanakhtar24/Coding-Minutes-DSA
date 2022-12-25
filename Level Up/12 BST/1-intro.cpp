@@ -36,19 +36,6 @@ Node *insert(Node *root, int key)
     return root;
 }
 
-void closest(Node *root, int diff, int key)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-
-    int d = min(diff, abs(root->data - key));
-    if (key > root->data)
-    {
-    }
-}
-
 int main()
 {
     Node *root = NULL;
